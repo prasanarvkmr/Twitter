@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+@model Twitter.Models.Regsiter
+
+@section scripts{
+    @Scripts.Render("~/bundles/validate")
+}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <title>Twitter Clone Login</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/Content/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/animate-custom.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="codrops-top">
+            <div class="clr"></div>
+        </div><!--/ Codrops top bar -->
+        <header></header>
+        <section>
+            <div id="container_demo">
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <div id="wrapper">
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    {
+                        <div id = "login" class="animate form">
+
+                        <h1>Twitter - Log in</h1>
+                        <p>
+                            <label for="username" class="uname" data-icon="u"> Email or username</label>
+                            @*<input id = "username" name= "username" required= "required" type= "text" placeholder= "myusername or mymail@mail.com" />*@
+                            @Html.TextBoxFor(x => x.Username, new { @placeholder = "Enter Username", @id = "username", @name = "username", @required = "required", @type = "text" })
+                        </p >
+                        <p >
+                            <label for="password" class="youpasswd" data-icon="p"> Your password</label>                            
+                            @Html.PasswordFor(x => x.Password, new { @class = "", @name="password", @placeholder = "Enter Password", @required = "required", @id = "password" })
+                         </p >
+
+                         @Html.ValidationSummary(true)
+                         @*<p class="keeplogin">
+                            <input type = "checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+                            <label for="loginkeeping">Keep me logged in</label>
+                        </p>*@
+                        <p class="login button">
+                            <input type = "submit" value="Login" />
+                        </p>
+                        <p class="change_link">
+                            Not a member yet ?
+                            <a href = "#toregister" class="to_register">Join us</a>
+                        </p>                                            @*<form action="" autocomplete="on"></form>*@
+                    </div>
+                    }
+
+    <div id="register" class="animate form">
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+        {
+            <h1> Twitter - Sign up </h1>
+            <p>
+                <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                @Html.TextBoxFor(x => x.Username, new { @placeholder = "Enter Username", @id = "usernamesignup", @name = "usernamesignup", @required = "required", @type = "text" })
+            </p>
+            <p>
+                <label for="fullnamesignup" class="uname" data-icon="u">Your Fullname</label>
+                @Html.TextBoxFor(x => x.FullName, new { @placeholder = "Enter Username", @id = "fullnamesignup", @name = "usernamesignup", @required = "required", @type = "text" })
+            </p>
+            <p>
+                <label for="emailsignup" class="youmail" data-icon="e"> Your email</label>
+                @Html.TextBoxFor(x => x.Email, new { @placeholder = "Enter Email", @id = "emailsignup", @name = "emailsignup", @required = "required", @type = "text" })
+            </p>
+            <p>
+                <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                @Html.PasswordFor(x => x.Password, new { @class = "", @name = "passwordsignup", @placeholder = "Enter Password", @required = "required", @id = "passwordsignup" })
+            </p>
+            <p>
+                <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+                @Html.PasswordFor(x => x.Password, new { @class = "", @name = "passwordsignup", @placeholder = "Enter Password", @required = "required", @id = "passwordsignup" })
+            </p>
+            <p class="signin button">
+                <input type="submit" value="Sign up"/>
+            </p>
+            <p class="change_link">
+                Already a member ?
+                <a href="#tologin" class="to_register"> Go and log in </a>
+            </p>
+        }
+    </div>
+
+</div>
+</div>
+</section>
+</div>
+</body>
+</html>
