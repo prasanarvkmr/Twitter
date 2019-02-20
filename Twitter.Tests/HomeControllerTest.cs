@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using Twitter.Controllers;
-using System.Web.MVC;
+using System.Web.Mvc;
+using System.Configuration;
 
 namespace Tests
 {
@@ -20,7 +21,7 @@ namespace Tests
             HomeController = new HomeController();
 
             // Act
-            ViewResult result = HomeController.Index() as ViewResult;
+            var result = HomeController.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
